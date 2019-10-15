@@ -43,6 +43,8 @@ def addVector(viewer,rbprmBuilder,color,v,name=None):
   gui.refresh()
 
 def displaySurfaceFromPoints(viewer,p_list,color=[0,0,0,1],name=None):
+  if len(p_list) <2 :
+    return
   gui = viewer.client.gui
   if name==None:
     i=0
