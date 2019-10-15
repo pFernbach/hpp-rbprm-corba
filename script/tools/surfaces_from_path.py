@@ -43,11 +43,16 @@ def getAllSurfacesDict (afftool) :
 
 # get rotation matrices form configs
 def getRotationMatrixFromConfigs(configs) :
+  eigenpy.switchToNumpyMatrix()
   R = []
   for config in configs:
     q = [0,0,0] + config[3:7]
-    #print "q = ",q
-    R.append(np.array(XYZQUATToSe3(q).rotation))
+    print "q = ",q
+    placement = XYZQUATToSe3(q)
+    print "placement = ",placement
+    rot = placement.rotation
+    print "rot = ",rot
+    R.append(np.array(rot))
   print "R in getRotationMatrixFromConfigs : ",R
   return R   
     
