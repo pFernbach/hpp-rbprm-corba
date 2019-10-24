@@ -3,7 +3,7 @@ from hpp.gepetto import Viewer
 from tools.display_tools import *
 import time
 print "Plan guide trajectory ..."
-import scenarios.sandbox.ANYmal.anymal_modular_palet_low_obstacles_path as tp
+import scenarios.sandbox.ANYmal.anymal_modular_palet_flat_path as tp
 
 #Robot.urdfSuffix += "_safeFeet"
 statusFilename = tp.statusFilename
@@ -85,12 +85,13 @@ acc_init = tp.ps.configAtParam(pId,0)[tp.indexECS+3:tp.indexECS+6]
 vel_goal = tp.ps.configAtParam(pId,tp.ps.pathLength(pId))[tp.indexECS:tp.indexECS+3]
 acc_goal = [0,0,0]
 vel_init = [0,0,0]
-robTreshold = 3
+robTreshold =0.
 # copy extraconfig for start and init configurations
 q_init[configSize:configSize+3] = vel_init[::]
 q_init[configSize+3:configSize+6] = acc_init[::]
 q_goal[configSize:configSize+3] = vel_goal[::]
 q_goal[configSize+3:configSize+6] = [0,0,0]
+
 
 
 q_init[2] = q_ref[2] + 0.13
